@@ -16,9 +16,6 @@ public class Roles {
     @Column
     private String role_name;
 
-//    @ManyToMany(mappedBy = "roles")
-//    private List<Customer> customers;
-
     @OneToMany(mappedBy = "role")
     private List<Customer> customers;
 

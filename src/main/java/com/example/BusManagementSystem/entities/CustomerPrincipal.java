@@ -6,8 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class CustomerPrincipal implements UserDetails {
 
@@ -19,13 +18,6 @@ public class CustomerPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-
-//        System.out.println( Collections.singletonList(new SimpleGrantedAuthority(customer.getRole().getRole_name())).contains("ADMIN") );
-
-//        String role = "ROLE_" + customer.getRole().getRole_name().toUpperCase();
-//        return Collections.singletonList(new SimpleGrantedAuthority(role));
-
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" +customer.getRole().getRole_name()));
     }
 

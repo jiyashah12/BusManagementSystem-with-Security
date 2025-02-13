@@ -25,7 +25,6 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new RuntimeException("Customer not found.");
         }
 
-//        return null;
         return new CustomerPrincipal(cust1);
     }
 }

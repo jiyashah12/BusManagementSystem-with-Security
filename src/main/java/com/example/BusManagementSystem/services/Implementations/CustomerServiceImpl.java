@@ -37,19 +37,9 @@ public class CustomerServiceImpl implements CustomerService {
     public void addCustomer(Customer customer) {
 
         customer.setPassword(bcpEncoder.encode(customer.getPassword()));
-//        customer.setRoles(Roles.valueOf("USER"));
-//        customer.setRoles(Roles.USER);
-//        Roles userRole = new Roles();
-//        userRole.setRole_name("USER");
-//        customer.setRoles(List.of(userRole));
-
-//        Roles role = roleRepository.findById(1L).get();
-//        customer.setRole(role);
-
         Roles role = roleRepository.findById(customer.getRole().getId())
                 .orElseThrow(() -> new RuntimeException("Role not found!"));
 
-        // Set the fetched role in the customer object
         customer.setRole(role);
         customerRepository.save(customer);
     }

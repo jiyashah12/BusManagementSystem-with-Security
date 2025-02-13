@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/bus")
+@RequestMapping("/api/bus")
 public class BusController {
 
     @Autowired
     private BusService busService;
 
-    @PostMapping("/addbus/{route_id}/{schedule_id}")
+    @PostMapping("/admin/addbus/{route_id}/{schedule_id}")
     public ResponseEntity<String> addBus(@PathVariable long route_id, @PathVariable long schedule_id, @RequestBody Bus bus) {
         try {
             busService.addBus(route_id, schedule_id, bus);
@@ -27,7 +27,7 @@ public class BusController {
     }
 
 
-    @DeleteMapping("/removebusbyid/{id}")
+    @DeleteMapping("/admin/removebusbyid/{id}")
     public ResponseEntity<String> removeBus(@PathVariable long id) {
         try {
             busService.removeBus(id);
@@ -54,7 +54,7 @@ public class BusController {
     }
 
 
-    @PutMapping("/updatebus/{bus_id}")
+    @PutMapping("/admin/updatebus/{bus_id}")
     public ResponseEntity<String> updateBus(@PathVariable long bus_id, @RequestBody Bus bus) {
         try {
             Bus existingBus = busService.getBusById(bus_id);
@@ -75,7 +75,6 @@ public class BusController {
     }
 
 }
-
 
 
 

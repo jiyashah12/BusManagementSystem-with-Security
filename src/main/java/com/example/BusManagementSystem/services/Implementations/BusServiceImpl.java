@@ -1,8 +1,9 @@
-package com.example.BusManagementSystem.services;
+package com.example.BusManagementSystem.services.Implementations;
 
 import com.example.BusManagementSystem.entities.*;
 import com.example.BusManagementSystem.exceptions.ResourceNotFoundException;
 import com.example.BusManagementSystem.repositories.*;
+import com.example.BusManagementSystem.services.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

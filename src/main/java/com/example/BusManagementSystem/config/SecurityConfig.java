@@ -32,21 +32,15 @@ public class SecurityConfig {
         httpSec.csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
 
+                        .requestMatchers("/api/customer/register", "/api/customer/login").permitAll()
 
-                        .requestMatchers("/api/customer/addcustomer", "/api/customer/login").permitAll()
-//                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/bus/**").hasAnyRole("CUSTOMER","ADMIN")
 
-//                        .requestMatchers(HttpMethod.GET, "/bus/**").hasAnyRole("CUSTOMER","ADMIN")
-                        .requestMatchers("/bus/getalldetails").hasRole("ADMIN")
-                        //.requestMatchers("/bus/**").hasRole("ADMIN")
+                        .requestMatchers("/api/bus/admin/**", "/api/customer/admin/**").hasRole("ADMIN")
+
 //                        .requestMatchers("/bus/**").authenticated()
 
-                        //.requestMatchers("/bus/**").permitAll()
-
-
-                        //.requestMatchers("/api/schedule", "/api/route").hasRole("ADMIN")
-
-
+                        .requestMatchers("/api/schedule", "/api/route").hasRole("ADMIN")
 
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())

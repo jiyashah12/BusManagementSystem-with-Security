@@ -1,9 +1,11 @@
-package com.example.BusManagementSystem.services;
+package com.example.BusManagementSystem.services.Implementations;
 
 import com.example.BusManagementSystem.entities.Customer;
 import com.example.BusManagementSystem.entities.Roles;
 import com.example.BusManagementSystem.repositories.CustomerRepository;
 import com.example.BusManagementSystem.repositories.RoleRepository;
+import com.example.BusManagementSystem.services.CustomerService;
+import com.example.BusManagementSystem.services.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,7 +13,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.naming.directory.InvalidAttributeIdentifierException;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,11 +43,11 @@ public class CustomerServiceImpl implements CustomerService {
 //        userRole.setRole_name("USER");
 //        customer.setRoles(List.of(userRole));
 
-        Roles role = roleRepository.findById(1L).get();
-        customer.setRole(role);
+//        Roles role = roleRepository.findById(1L).get();
+//        customer.setRole(role);
 
-//        Roles role = roleRepository.findById(customer.getRole().getId())
-//                .orElseThrow(() -> new RuntimeException("Role not found!"));
+        Roles role = roleRepository.findById(customer.getRole().getId())
+                .orElseThrow(() -> new RuntimeException("Role not found!"));
 
         // Set the fetched role in the customer object
         customer.setRole(role);
@@ -91,11 +92,9 @@ public class CustomerServiceImpl implements CustomerService {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(customer.getUsername(), customer.getPassword()));
 
         if(authentication.isAuthenticated()){
-//            return "Success";
             return jwtService.generateToken(customer.getUsername());
         }
         return "Fail";
-//        return "";
     }
 }
 

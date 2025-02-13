@@ -1,4 +1,4 @@
-package com.example.BusManagementSystem.services;
+package com.example.BusManagementSystem.services.Implementations;
 
 import com.example.BusManagementSystem.entities.*;
 import com.example.BusManagementSystem.exceptions.ResourceNotFoundException;
@@ -6,6 +6,7 @@ import com.example.BusManagementSystem.repositories.BookingRepository;
 import com.example.BusManagementSystem.repositories.BusRepository;
 import com.example.BusManagementSystem.repositories.CustomerRepository;
 import com.example.BusManagementSystem.repositories.RouteRepository;
+import com.example.BusManagementSystem.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

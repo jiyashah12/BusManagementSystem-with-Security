@@ -1,7 +1,8 @@
-package com.example.BusManagementSystem.services;
+package com.example.BusManagementSystem.services.Implementations;
 
 import com.example.BusManagementSystem.entities.Schedule;
 import com.example.BusManagementSystem.repositories.ScheduleRepository;
+import com.example.BusManagementSystem.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

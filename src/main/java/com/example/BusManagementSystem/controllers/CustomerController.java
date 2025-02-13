@@ -16,7 +16,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping("/addcustomer")
+    @PostMapping("/register")
     public ResponseEntity<String> addCustomer(@Valid @RequestBody Customer customer) {
         try {
             customerService.addCustomer(customer);
@@ -28,7 +28,7 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/viewAllCustomers")
+    @GetMapping("/admin/viewAllCustomers")
     public List<Customer> getAllCustomers() {
         List<Customer> customers = customerService.getAllCustomers();
         return customers;
@@ -82,7 +82,7 @@ public class CustomerController {
     }
 
 
-    @DeleteMapping("/deleteallcustomers")
+    @DeleteMapping("/admin/deleteallcustomers")
     public ResponseEntity<String> deleteAllCustomers() {
         try {
             customerService.deleteAllCustomers();
@@ -94,7 +94,7 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/getcustomersbyemail/{email}")
+    @GetMapping("/admin/getcustomersbyemail/{email}")
     public Customer getCustomersByEmail(@PathVariable String email) {
         Customer customers = customerService.getCustomerByEmail(email);
         return customers;
@@ -103,8 +103,6 @@ public class CustomerController {
 
     @PostMapping("/login")
     public String login(@RequestBody Customer customer){
-//        System.out.println(user);
-//        return "Success";
         return customerService.verify(customer);
     }
 
